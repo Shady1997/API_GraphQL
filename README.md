@@ -89,9 +89,9 @@ src/
    ```
 
 4. **Access the application**
-   - GraphiQL Interface: http://localhost:8080/graphiql
-   - GraphQL Endpoint: http://localhost:8080/graphql
-   - H2 Console: http://localhost:8080/h2-console
+   - GraphiQL Interface: http://localhost:8089/graphiql
+   - GraphQL Endpoint: http://localhost:8089/graphql
+   - H2 Console: http://localhost:8089/h2-console
 
 ### H2 Database Configuration
 
@@ -112,7 +112,7 @@ src/
 
 1. **Create a new request** in Postman
 2. **Set method to POST**
-3. **Set URL to**: `http://localhost:8080/graphql`
+3. **Set URL to**: `http://localhost:8089/graphql`
 4. **Set Headers**:
    - `Content-Type: application/json`
    - `Accept: application/json`
@@ -903,7 +903,7 @@ public class GraphQLApiIntegrationTest {
 ### 1. Import Environment Variables
 
 Create a Postman environment with these variables:
-- `base_url`: `http://localhost:8080`
+- `base_url`: `http://localhost:8089`
 - `user_id`: `1` (for testing)
 - `test_email`: `test@example.com`
 
@@ -1080,14 +1080,14 @@ mutation {
 ### User Entity
 ```java
 {
-  "id": "Long (Primary Key)",
-  "name": "String (Required, 2-100 chars)",
-  "email": "String (Required, Valid email, Unique)",
-  "phone": "String (Optional, Max 15 chars)",
-  "address": "String (Optional, Max 500 chars)",
-  "createdAt": "DateTime (Auto-generated)",
-  "updatedAt": "DateTime (Auto-updated)"
-}
+        "id": "Long (Primary Key)",
+        "name": "String (Required, 2-100 chars)",
+        "email": "String (Required, Valid email, Unique)",
+        "phone": "String (Optional, Max 15 chars)",
+        "address": "String (Optional, Max 500 chars)",
+        "createdAt": "DateTime (Auto-generated)",
+        "updatedAt": "DateTime (Auto-updated)"
+        }
 ```
 
 ## Validation Rules
