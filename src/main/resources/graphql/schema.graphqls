@@ -1,0 +1,75 @@
+# GraphQL Schema for User CRUD API
+
+# Scalar types for date and time
+scalar DateTime
+scalar Long
+
+# User entity type
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String
+    address: String
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+# Input type for creating and updating users
+input UserInput {
+    name: String!
+    email: String!
+    phone: String
+    address: String
+}
+
+# Query root type
+type Query {
+    # Get all users
+    getAllUsers: [User!]!
+
+    # Get user by ID
+    getUserById(id: ID!): User
+
+    # Get user by email
+    getUserByEmail(email: String!): User
+
+    # Search users by name (case insensitive, partial match)
+    searchUsersByName(name: String!): [User!]!
+
+    # Search users by multiple criteria
+    searchUsers(name: String, email: String, phone: String): [User!]!
+
+    # Get total user count
+    getUserCount: Long!
+
+    # Check if user exists by ID
+    userExists(id: ID!): Boolean!
+
+    # Check if email exists
+    emailExists(email: String!): Boolean!
+}
+
+# Mutation root type
+type Mutation {
+    # Create a new user
+    createUser(input: UserInput!): User!
+
+    # Update an existing user
+    updateUser(id: ID!, input: UserInput!): User!
+
+    # Delete user by ID (returns true if successful)
+    deleteUser(id: ID!): Boolean!
+}
+
+# Subscription root type (for future enhancements)
+type Subscription {
+    # Subscribe to user creation events
+    userCreated: User!
+
+    # Subscribe to user update events
+    userUpdated: User!
+
+    # Subscribe to user deletion events
+    userDeleted: ID!
+}
